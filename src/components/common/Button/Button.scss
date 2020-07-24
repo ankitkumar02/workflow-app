@@ -1,0 +1,26 @@
+.button-container {
+  height: 40px;
+  min-width: 150px;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+    box-shadow: -1px -1px 2px 2px #e7e7e7;
+  }
+  &.create {
+    background-color: #6cce6c;
+  }
+  &.delete {
+    background-color: #e62f2d;
+  }
+  &.save {
+    background-color: #5555e4;
+  }
+  &.shuffle {
+    background-color: #a50fdc;
+  }
+}

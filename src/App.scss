@@ -1,0 +1,17 @@
+@import './styles/colors.scss';
+
+.main-app {
+  .main-header {
+    position: fixed;
+    width: 100%;
+    height: 65px;
+    background-color: $headerColor;
+    display: flex;
+    align-items: center;
+    color: $fontColor;
+    padding-left: 20px;
+    font-size: 24px;
+    letter-spacing: 3px;
+    z-index: 10;
+  }
+}

@@ -1,0 +1,18 @@
+.search-container {
+  width: 330px;
+  .search-header {
+    font-family: NotoSans-Regular;
+  }
+  .search-input {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: NotoSans-Light;
+    &:focus {
+      outline: none;
+    }
+  }
+}

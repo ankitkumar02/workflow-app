@@ -1,0 +1,56 @@
+.workflow-container {
+  position: relative;
+  height: 170px;
+  width: 260px;
+  border: 2px solid #9a9393;
+  margin-right: 90px;
+  margin-bottom: 40px;
+  box-shadow: -1px -1px 7px 0 #e7e7e7;
+  border-radius: 5px;
+  padding: 20px;
+  .remove-button {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+  }
+  .workflow-title {
+    height: 34px;
+    width: 100%;
+    border: 1px solid #e7e7e7;
+    font-size: 16px;
+    padding: 4px;
+    font-family: NotoSans-SemiBold;
+    input {
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+  }
+  .workflow-status-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    font-family: NotoSans-Regular;
+    font-size: 18px;
+    .completed {
+      color: #6cce6c;
+    }
+    .pending {
+      color: 'grey';
+    }
+  }
+  &:hover {
+    cursor: pointer;
+
+    background-color: #16abe01c;
+    .remove-button {
+      visibility: visible;
+    }
+  }
+}

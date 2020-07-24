@@ -1,0 +1,18 @@
+.workflow-dashboard-page {
+  position: relative;
+  top: 65px;
+  .workflow-header {
+    height: 100px;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .workflows-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+  }
+}

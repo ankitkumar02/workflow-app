@@ -1,0 +1,19 @@
+.filter-workflows {
+  height: 45px;
+  min-width: 150px;
+  padding: 10px;
+  font-family: NotoSans-Regular;
+  font-size: 16px;
+  border-radius: 12px;
+  &:focus {
+    outline: none;
+  }
+  option {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
