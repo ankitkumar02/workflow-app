@@ -8,16 +8,12 @@ const initialState = {
 const workflowReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.FETCH_WORKFLOWS_LIST:
-      console.log('fetch reducer', action.payload);
-      debugger;
       return {
         ...state,
         workflowsList: action.payload
       };
 
     case constants.UPDATE_WORKFLOWS_LIST:
-      console.log('update reducer', action.payload);
-      debugger;
       return {
         ...state,
         workflowsList: action.payload
