@@ -26,8 +26,8 @@ class LoginPage extends Component {
     event.preventDefault();
     axios
       .post('/signup', {
-        email,
-        password
+        email: 'email',
+        password: 'password'
       })
       .then(response => {
         console.log(response);
