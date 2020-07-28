@@ -1,0 +1,30 @@
+@import '../../../styles/colors.scss';
+
+.toast-container {
+  height: 50px;
+  min-width: 200px;
+  bottom: 50px;
+  margin: 0 auto;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 15px;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, 0px);
+  z-index: 9999;
+  &.success {
+    background-color: $primaryGreenColor;
+  }
+  &.error {
+    background-color: $primaryRedColor;
+  }
+  .close-button {
+    margin-left: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

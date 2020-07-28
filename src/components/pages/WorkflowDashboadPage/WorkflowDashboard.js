@@ -2,112 +2,195 @@ import React, { Component } from 'react';
 import './WorkflowDashboard.scss';
 import ActionButton from '../../common/Button/Action';
 import Select from '../../common/Select';
-import { deepCopyObject } from '../../../utils/object';
 import Workflow from './Workflow';
-import { mockdata } from './mockdata';
 import SearchInput from '../../common/SearchInput';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Toast from '../../common/Toast';
+import {
+  fetchWorkflowsList,
+  updateWorkflowsList
+} from '../../../actions/workflow-actions';
 
 class WorkflowDashboard extends Component {
   state = {
-    workflowsList: mockdata,
-    filteredList: []
+    searchValue: '',
+    filterValue: 'all',
+    isToastShown: false,
+    toastType: '',
+    toastContent: ''
   };
 
   componentDidMount = () => {
-    const filteredList = deepCopyObject(this.state.workflowsList);
-    this.setState({ filteredList });
+    // this.props.fetchWorkflowsList();
   };
 
-  onSelectOption = event => {
-    const selectedOption = event.target.value;
-    this.filterWorkflows(selectedOption);
+  onFilterValueChange = event => {
+    this.setState({ filterValue: event.target.value });
   };
 
-  filterWorkflows = selectedOption => {
+  onSearchValueChange = event => {
+    this.setState({ searchValue: event.target.value });
+  };
+
+  filterWorkflows = (selectedOption, workflowsList) => {
+    let filteredList = [...workflowsList];
     if (selectedOption === 'all') {
-      this.setState({ filteredList: this.state.workflowsList });
+      return filteredList;
     } else {
-      const filteredList = this.state.workflowsList.filter(
+      return filteredList.filter(
         workflow =>
           workflow.workflowStatus.toLowerCase() === selectedOption.toLowerCase()
       );
-      this.setState({ filteredList });
     }
   };
 
   searchWorkflows = searchInput => {
-    const filteredList = this.state.workflowsList.filter(workflow =>
+    const filteredList = this.props.workflowsList.filter(workflow =>
       workflow.workflowName.toLowerCase().includes(searchInput.toLowerCase())
     );
-    this.setState({ filteredList });
+    return filteredList;
   };
 
   deleteWorkflow = (event, id) => {
     event.stopPropagation();
 
-    const filteredList = this.state.filteredList.filter(
+    const workflowsList = this.props.workflowsList.filter(
       workflow => workflow.workflowId !== id
     );
-    const workflowsList = this.state.workflowsList.filter(
-      workflow => workflow.workflowId !== id
-    );
-
-    this.setState({ filteredList, workflowsList });
+    this.props.updateWorkflowsList(workflowsList);
   };
 
-  changeWorkflowStatus = (event, id) => {
+  changeWorkflowStatus = (event, id, index) => {
     event.stopPropagation();
-    let flag = false;
-    const workflowsList = this.state.workflowsList.map(workflow => {
-      if (workflow.workflowId === id) {
-        const isAnyNodePending = workflow.nodesList.find(
-          node =>
-            node.nodeStatus === 'Pending' || node.nodeStatus == 'InProgress'
-        );
-        if (isAnyNodePending) {
-          console.log('Cannot be marked as completed');
-        } else {
-          flag = true;
+
+    const isAnyNodePending = this.props.workflowsList[index].nodesList.find(
+      node => node.nodeStatus === 'Pending' || node.nodeStatus == 'InProgress'
+    );
+    if (isAnyNodePending) {
+      this.showToastMessage(
+        'error',
+        'Cannot change the workflow status as one or more nodes are still pending'
+      );
+    } else {
+      const workflowsList = this.props.workflowsList.map(workflow => {
+        if (workflow.workflowId === id) {
           return {
             ...workflow,
             workflowStatus:
               workflow.workflowStatus === 'Pending' ? 'Completed' : 'Pending'
           };
         }
-      }
-      return { ...workflow };
-    });
+        return { ...workflow };
+      });
+      this.props.updateWorkflowsList(workflowsList);
+      this.showToastMessage('success', 'Workflow status changed');
+    }
+  };
 
-    this.setState({ workflowsList, filteredList: workflowsList });
+  openWorkflowPage = (url, nodesList) => {
+    this.props.history.push({
+      pathname: url
+    });
+  };
+
+  renderCreateWorkflow = () => {
+    const newWorkflowId =
+      this.props.workflowsList[this.props.workflowsList.length - 1].workflowId +
+      1;
+    this.props.history.push(`/workflows/${newWorkflowId}`);
+  };
+
+  closeToastMessage = () => {
+    this.setState({ isToastShown: false });
+  };
+
+  showToastMessage = (toastType, toastContent) => {
+    this.setState({
+      isToastShown: true,
+      toastType,
+      toastContent
+    });
   };
 
   render() {
+    const {
+      searchValue,
+      filterValue,
+      isToastShown,
+      toastType,
+      toastContent
+    } = this.state;
+    const workflowsList = this.searchWorkflows(searchValue);
+    const filteredList = this.filterWorkflows(filterValue, workflowsList);
+
     return (
       <div className="workflow-dashboard-page">
         <div className="workflow-header">
-          <SearchInput searchWorkflows={this.searchWorkflows} />
+          <SearchInput
+            value={this.state.searchValue}
+            onSearchValueChange={this.onSearchValueChange}
+          />
 
-          <Select onSelectOption={this.onSelectOption} />
+          <Select
+            value={this.state.filterValue}
+            onFilterValueChange={this.onFilterValueChange}
+          />
 
-          <ActionButton type="create" buttonText="Create Workflow" />
+          <ActionButton
+            type="create"
+            buttonText="Create Workflow"
+            onClick={() => this.renderCreateWorkflow()}
+          />
         </div>
         <div className="workflows-list-container">
-          {this.state.filteredList?.map(workflow => {
-            const { workflowId, workflowName, workflowStatus } = workflow;
+          {filteredList?.map((workflow, index) => {
+            const {
+              workflowId,
+              workflowName,
+              workflowStatus,
+              nodesList
+            } = workflow;
             return (
               <Workflow
                 id={workflowId}
+                index={index}
                 name={workflowName}
                 status={workflowStatus}
+                nodesList={nodesList}
                 deleteWorkflow={this.deleteWorkflow}
                 changeWorkflowStatus={this.changeWorkflowStatus}
+                openWorkflowPage={this.openWorkflowPage}
               />
             );
           })}
         </div>
+        {isToastShown && (
+          <Toast type={toastType} onCloseToast={this.closeToastMessage}>
+            {toastContent}
+          </Toast>
+        )}
       </div>
     );
   }
 }
 
-export default WorkflowDashboard;
+const mapStateToProps = store => {
+  console.log(store);
+  return {
+    workflowsList: store.workflows.workflowsList
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchWorkflowsList: () => dispatch(fetchWorkflowsList()),
+    updateWorkflowsList: workflowsList =>
+      dispatch(updateWorkflowsList(workflowsList))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(WorkflowDashboard));

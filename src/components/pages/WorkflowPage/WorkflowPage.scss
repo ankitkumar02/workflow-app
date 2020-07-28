@@ -1,0 +1,52 @@
+.workflow-page {
+  position: relative;
+  top: 65px;
+  .workflow-page-header {
+    height: 100px;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    .workflow-name {
+      height: 40px;
+      min-width: 300px;
+      width: auto;
+      border: 1px solid grey;
+      border-radius: 5px;
+      vertical-align: middle;
+    }
+    .workflow-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      .button-container {
+        margin: 0px 15px;
+      }
+    }
+  }
+  .workflow-nodes-container {
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    .workflow-node {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      margin-left: 50px;
+      height: 50vh;
+      width: 250px;
+      border: 1px solid grey;
+      .workflow-node-title {
+        height: 10%;
+        margin-bottom: 10%;
+      }
+      .workflow-node-description {
+        height: 90%;
+        width: 100%;
+        resize: none;
+      }
+    }
+  }
+}

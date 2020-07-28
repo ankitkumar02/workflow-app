@@ -8,6 +8,9 @@ module.exports = {
   mode: 'development',
   entry: ['./src/index.js'],
   devtool: 'inline-source-map',
+  devServer: {
+    port: 3000
+  },
   output: {
     path: path.join(__dirname, outputDirectory),
     filename: 'bundle.js',

@@ -1,3 +1,5 @@
+@import '../../../styles/colors.scss';
+
 .button-container {
   height: 40px;
   min-width: 150px;
@@ -12,15 +14,15 @@
     box-shadow: -1px -1px 2px 2px #e7e7e7;
   }
   &.create {
-    background-color: #6cce6c;
+    background-color: $primaryGreenColor;
   }
   &.delete {
-    background-color: #e62f2d;
+    background-color: $primaryRedColor;
   }
-  &.save {
-    background-color: #5555e4;
+  &.primary {
+    background-color: $primaryBlueColor;
   }
   &.shuffle {
-    background-color: #a50fdc;
+    background-color: $primaryPurpleColor;
   }
 }

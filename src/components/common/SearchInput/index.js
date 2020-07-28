@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import './SearchInput.scss';
 
-const SearchInput = ({ searchWorkflows }) => {
-  const [searchInput, setSearchInput] = useState('');
-
-  const onSearchInputChange = event => {
-    const searchInput = event.target.value;
-    setSearchInput(searchInput);
-    searchWorkflows(searchInput);
-  };
-
+const SearchInput = ({ value, onSearchValueChange }) => {
   return (
     <div className="search-container">
       <div className="search-header">
@@ -19,8 +11,8 @@ const SearchInput = ({ searchWorkflows }) => {
         type="text"
         placeholder="Search"
         className="search-input"
-        value={searchInput}
-        onChange={onSearchInputChange}
+        value={value}
+        onChange={onSearchValueChange}
       />
     </div>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Select.scss';
 
-const Select = ({ onSelectOption }) => {
+const Select = ({ value, onFilterValueChange }) => {
   return (
-    <select className="filter-workflows" onChange={onSelectOption}>
+    <select className="filter-workflows" onChange={onFilterValueChange}>
       <option defaultValue value="all">
         ALL
       </option>

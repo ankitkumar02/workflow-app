@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
-import { Route, Link } from 'react-router-dom';
-import LoginPage from './components/pages/LoginPage';
+import { Route, useHistory } from 'react-router-dom';
+import LoginPage from './components/pages/LoginPage/LoginPage';
 import WorkflowDashboard from './components/pages/WorkflowDashboadPage/WorkflowDashboard';
-import WorkflowPage from './components/pages/WorkflowDashboadPage/Workflow';
+import WorkflowPage from './components/pages/WorkflowPage/WorkflowPage';
+import ActionButton from './components/common/Button/Action';
 
-class App extends Component {
-  state = {
-    isLoggedIn: false
-  };
+const App = props => {
+  const history = useHistory();
 
-  render() {
-    return (
-      <div className="main-app">
-        <header className="main-header">FLOWAPP</header>
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/" component={WorkflowDashboard} />
-        <Route exact path="/workflows/:workflowId" component={WorkflowPage} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="main-app">
+      <header className="main-header">
+        FLOWAPP
+        <ActionButton
+          buttonText="Logout"
+          type="primary"
+          onClick={() => history.push('/')}
+        />
+      </header>
+      <Route exact path="/" component={LoginPage} />
+      <Route exact path="/workflows" component={WorkflowDashboard} />
+      <Route exact path="/workflows/:workflowId" component={WorkflowPage} />
+    </div>
+  );
+};
 
 export default App;

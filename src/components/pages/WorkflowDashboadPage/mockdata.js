@@ -13,13 +13,13 @@ export const mockdata = [
       {
         nodeId: 12,
         nodeName: 'Functional Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeDescription: 'To complete the functional programming',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 13,
         nodeName: 'Object Oriented Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeDescription: 'To complete the object oriented programming',
         nodeStatus: 'Completed'
       }
     ]
@@ -31,20 +31,21 @@ export const mockdata = [
     nodesList: [
       {
         nodeId: 21,
-        nodeName: 'Basics of Javascript',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'React Router',
+        nodeDescription: 'Understand the concepts of react router',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 22,
-        nodeName: 'Functional Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Higher Order Components',
+        nodeDescription: 'How to write higher order components',
         nodeStatus: 'InProgress'
       },
       {
         nodeId: 23,
-        nodeName: 'Object Oriented Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'React Hooks',
+        nodeDescription:
+          'Different types of react hooks say useState, useEffect etc',
         nodeStatus: 'Pending'
       }
     ]
@@ -56,20 +57,21 @@ export const mockdata = [
     nodesList: [
       {
         nodeId: 31,
-        nodeName: 'Basics of Javascript',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Asynchronous Programming',
+        nodeDescription: 'How asynchronous programming works',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 32,
-        nodeName: 'Functional Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Deploying Node Js Apps',
+        nodeDescription: 'How to deploy node js applications on to the cloud',
         nodeStatus: 'InProgress'
       },
       {
         nodeId: 33,
-        nodeName: 'Object Oriented Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Event Driven programming',
+        nodeDescription:
+          'Concepts of event emitter, registering and firing of events',
         nodeStatus: 'InProgress'
       }
     ]
@@ -81,20 +83,20 @@ export const mockdata = [
     nodesList: [
       {
         nodeId: 41,
-        nodeName: 'Basics of Javascript',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Private Cloud',
+        nodeDescription: 'Understand the concepts of Private Cloud',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 42,
-        nodeName: 'Functional Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Public Cloud',
+        nodeDescription: 'Understand the basics of Public Cloud',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 43,
-        nodeName: 'Object Oriented Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Hybrid Cloud',
+        nodeDescription: 'Understand the basics of Hybrid Cloud',
         nodeStatus: 'Completed'
       }
     ]
@@ -106,45 +108,49 @@ export const mockdata = [
     nodesList: [
       {
         nodeId: 51,
-        nodeName: 'Basics of Javascript',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Basics of ExpressJs',
+        nodeDescription:
+          'Work on a basic express application to understand the basics',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 52,
-        nodeName: 'Functional Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Express Routing',
+        nodeDescription: 'Write routes in express',
         nodeStatus: 'Inprogress'
       },
       {
         nodeId: 53,
-        nodeName: 'Object Oriented Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Maintain Sessions',
+        nodeDescription:
+          'Use memorystore or redis framework to maintaine express sessions',
         nodeStatus: 'Pending'
       }
     ]
   },
   {
     workflowId: 6,
-    workflowName: 'Angular Js',
+    workflowName: 'HTML',
     workflowStatus: 'Completed',
     nodesList: [
       {
         nodeId: 61,
-        nodeName: 'Basics of Javascript',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Semantic Elements',
+        nodeDescription: 'Usage and what are semantic elements',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 62,
-        nodeName: 'Functional Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'GeoLocation APIs',
+        nodeDescription:
+          'Use geolocation apis to find out the longitude and latitude of some location',
         nodeStatus: 'Completed'
       },
       {
         nodeId: 63,
-        nodeName: 'Object Oriented Programming',
-        nodeDescription: 'To complete the basics of javascript',
+        nodeName: 'Web Workers',
+        nodeDescription:
+          'Try using web workers to improve the performance of client app',
         nodeStatus: 'Completed'
       }
     ]

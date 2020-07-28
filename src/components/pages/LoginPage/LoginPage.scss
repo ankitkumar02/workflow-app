@@ -1,0 +1,32 @@
+.login-page-container {
+  position: relative;
+  top: 25vh;
+  .login-box {
+    height: 400px;
+    width: 50%;
+    border: 1px solid #c7c4c4;
+    border-radius: 5px;
+    margin: 0 auto;
+    box-shadow: -1px -1px 15px 1px grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .login-header {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 50px;
+    }
+    .email,
+    .password {
+      height: 40px;
+      width: 80%;
+      border: 1px solid #c7c4c4;
+      margin-bottom: 30px;
+    }
+    .button-container {
+      margin: 20px;
+      width: 80%;
+    }
+  }
+}
